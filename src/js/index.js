@@ -76,9 +76,8 @@ $(document).ready(function() {
         // var bounds = objectManager.getBounds();
         // console.log(bounds);
 
-        myMap.behaviors.disable('scrollZoom');
-
-        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+        if (win.width() < 768){
+          myMap.behaviors.disable('scrollZoom');
           myMap.behaviors.disable('drag');
         }
     }
