@@ -1,0 +1,355 @@
+@import "node_modules/bootstrap/scss/bootstrap";
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+@mixin placeholder {
+  color: #b8bed8;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 26px;
+}
+
+.head {
+  height: 32px;
+  color: #000000;
+  font-family: Montserrat;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 20px;
+  margin-top: 52px;
+  margin-left: 8%;
+  margin-bottom: 41px;
+}
+
+
+body {
+  display: flex;
+  justify-content: center;
+  background-color: #f0f0f0;
+}
+
+.content {
+  height: -webkit-fill-available;
+  width: 80%;
+  max-width: 1200px;
+  min-width: 320px;
+  background: #f6f6f6;
+  padding: 0 5% 0 5%;
+}
+
+.main{
+  margin: 0 8% 0 8%;
+}
+
+
+#content-tab1{
+      label{
+        margin-top: 30px;
+        height: 12px;
+        color: #3f3f3f;
+        font-family: Montserrat;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 26px;
+      }
+
+      input{
+        font-family: Montserrat;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 26px;
+        margin-top: 9px;
+
+      &::-webkit-input-placeholder {@include placeholder;}
+      &::-moz-placeholder          {@include placeholder;}/* Firefox 19+ */
+      &:-moz-placeholder           {@include placeholder;}/* Firefox 18- */
+      &:-ms-input-placeholder      {@include placeholder;}
+      }
+      #comment{
+        height: 111px;
+      }
+}
+
+.button-send{
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 15px;
+}
+
+.send {
+  border-radius: 28px;
+  background-color: #212bff;
+  color: #ffffff;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  line-height: 2.5;
+  border-radius: 2.25rem;
+  margin: 38px 0 38px 0;
+  width: 200px;
+  height: 56px;
+
+  &:hover{
+    background: #2029ea;
+  }
+
+  &:active{
+    background: #1e26d8;
+  }
+}
+
+
+.form-control{
+  height: 56px;
+  border: 1px solid #dadef0;
+
+  &:hover{
+    cursor: pointer;
+    border-color: #c3c9db;
+  }
+
+  &:focus{
+    border-color: #8288a2;
+  }
+}
+
+
+/* Базовый контейнер табов */
+.tabs {
+	min-width: 320px;
+	max-width: 1200px;
+	padding: 0px;
+	margin: 0 auto;
+}
+/* Стили секций с содержанием */
+.tabs>section {
+	display: none;
+	padding: 15px;
+	background: #fff;
+	border: 1px solid #ddd;
+}
+
+.radio{
+  label {
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    padding-left: 25px;
+    margin-right: 15px;
+    font-size: 13px;
+  }
+
+  input[type=radio] {
+    display: none;
+  }
+
+  label:before {
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    position: absolute;
+    left: 0;
+    bottom: 1px;
+    border: 1px solid #dadef0;
+    background-color: #fff;
+    border-radius: 100%;
+  }
+
+  label:hover:before {
+    border-color: #212bff;
+  }
+
+  input[type=radio]:checked + label:before {
+    display: flex;
+    content: "\2022";
+    color: #212bff;
+    padding-bottom: 4px;
+    font-size: 25px;
+    justify-content: center;
+    line-height: 18px;
+    align-items: center;
+    border-color: #212bff;
+  }
+}
+
+#map{
+  width: 100%;
+  height: 550px;
+}
+
+.radio{
+  margin-bottom: 37px;
+}
+
+
+
+
+@-webkit-keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+/* Прячем чекбоксы */
+.tabs>input {
+	display: none;
+	position: absolute;
+}
+/* Стили переключателей вкладок (табов) */
+.tabs>label {
+  display: inline-block;
+  margin: 0 0 -1px;
+  padding: 15px 25px;
+  font-weight: 600;
+  text-align: center;
+  color: #8288a2;
+  border: 0px solid #ddd;
+  border-width: 1px 1px 1px 1px;
+  background: #edeeef;
+  border-radius: 3px 3px 0 0;
+}
+
+/* Изменения стиля переключателей вкладок при наведении */
+.tabs>label:hover {
+	color: #212bff;
+	cursor: pointer;
+}
+/* Стили для активной вкладки */
+.tabs>input:checked+label {
+	color: #212bff;
+	border-bottom: 1px solid #fff;
+	background: #fff;
+}
+/* Активация секций с помощью псевдокласса :checked */
+#tab1:checked~#content-tab1, #tab2:checked~#content-tab2 {
+	display: block;
+}
+
+.input-labels{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  .error{
+    color: red;
+  }
+
+}
+
+
+
+#tab2-mobile:checked~#content-tab2 {
+	display: block;
+}
+
+#label2-mobile{
+  display: none;
+  background: #fff;
+  border: 1px solid #ddd;
+}
+
+
+
+@media screen and (max-width: 768px) {
+  .tabs>label{
+    color: #b8bed8;
+  }
+
+  #map{
+    height: 300px;
+  }
+  section{
+    border-bottom: 0px !important;
+  }
+
+  #label1{
+    display: flex;
+    background: #fff;
+  }
+
+  #label2{
+    display: none;
+  }
+
+  #label2-mobile{
+    display: flex;
+  }
+
+  .main{
+    margin-left: 55px;
+  }
+
+    .head {
+      margin-left: 55px;
+      font-size: 28px;
+    }
+}
+
+@media screen and (max-width: 670px) /* height >= 820 px */
+{
+  .main{
+    margin-left: 30px;
+  }
+
+    .head {
+      font-size: 26px;
+      margin-left: 30px;
+    }
+}
+
+
+
+@media screen and (max-width: 590px) /* height >= 820 px */
+{
+    .head {
+      font-size: 24px;
+    }
+}
+
+@media screen and (max-width: 550px) /* height >= 820 px */
+{
+    .head {
+      font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 470px) /* height >= 820 px */
+{
+  .content{
+    padding: 0;
+  }
+  .main{
+    margin-left: 20px;
+  }
+
+    .head {
+      font-size: 18px;
+      margin-left: 20px;
+    }
+}
+
+@media only screen and (max-width: 335px){
+  .tabs>section{
+    padding: 0;
+  }
+}
+
+
+@media only screen and (max-width: 320px) {
+  body {
+    overflow-x: scroll;
+  }
+}
