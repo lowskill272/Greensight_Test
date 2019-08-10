@@ -76,10 +76,16 @@ $(document).ready(function() {
         // var bounds = objectManager.getBounds();
         // console.log(bounds);
 
-        if (win.width() < 768){
-          myMap.behaviors.disable('scrollZoom');
-          myMap.behaviors.disable('drag');
-        }
+        $(window).on('resize', function(){
+          var win = $(this);
+          if (win.width() < 768){
+            myMap.behaviors.disable('scrollZoom');
+            myMap.behaviors.disable('drag');
+          } else {
+            myMap.behaviors.enable('scrollZoom');
+            myMap.behaviors.enable('drag');
+          }
+        });
     }
 
     $(window).on('resize', function(){
