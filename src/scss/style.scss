@@ -1,14 +1,21 @@
+// Импорт стилей и шрифтов
 @import "node_modules/bootstrap/scss/bootstrap";
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
+//Переменные основных цветов
+$blue-color: #212bff;
+$gray-color: #b8bed8;
+
+// Миксин для плейхолдеров
 @mixin placeholder {
-  color: #b8bed8;
+  color: $gray-color;
   font-family: Montserrat;
   font-size: 16px;
   font-weight: 500;
   line-height: 26px;
 }
 
+// Стили для заголовка
 .head {
   height: 32px;
   color: #000000;
@@ -18,16 +25,17 @@
   line-height: 20px;
   margin-top: 52px;
   margin-left: 8%;
-  margin-bottom: 41px;
+  margin-bottom: 30px;
 }
 
-
+// Стили основного тела
 body {
   display: flex;
   justify-content: center;
   background-color: #f0f0f0;
 }
 
+// Стили контентного контейнера
 .content {
   height: -webkit-fill-available;
   width: 80%;
@@ -37,14 +45,11 @@ body {
   padding: 0 5% 0 5%;
 }
 
-.main{
-  margin: 0 8% 0 8%;
-}
-
-
+// Стили контентной части вкладки Доставка
 #content-tab1{
+
       label{
-        margin-top: 30px;
+        margin-top: 10px;
         height: 12px;
         color: #3f3f3f;
         font-family: Montserrat;
@@ -65,151 +70,153 @@ body {
       &:-moz-placeholder           {@include placeholder;}/* Firefox 18- */
       &:-ms-input-placeholder      {@include placeholder;}
       }
+
       #comment{
         height: 111px;
       }
+
+      .input-labels{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+
+        .form-group{
+          padding-right: 10px;
+          padding-left: 10px;
+
+          .form-control{
+            height: 56px;
+            border: 1px solid #dadef0;
+
+            &:hover{
+              cursor: pointer;
+              border-color: #c3c9db;
+            }
+
+            &:focus{
+              border-color: #8288a2;
+            }
+          }
+        }
+
+        .error{
+          color: red;
+        }
+      }
 }
 
+// Стили контентной части вкладки Самовывоз
+#content-tab2{
+
+  .radio{
+    margin-bottom: 20px;
+
+    label {
+      display: inline-block;
+      cursor: pointer;
+      position: relative;
+      padding-left: 25px;
+      margin-right: 15px;
+      font-size: 13px;
+    }
+
+    input[type=radio] {
+      display: none;
+    }
+
+    label:before {
+      content: "";
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+      position: absolute;
+      left: 0;
+      bottom: 1px;
+      border: 1px solid #dadef0;
+      background-color: #fff;
+      border-radius: 100%;
+    }
+
+    label:hover:before {
+      border-color: $blue-color;
+    }
+
+    input[type=radio]:checked + label:before {
+      display: flex;
+      content: "\2022";
+      color: $blue-color;
+      padding-bottom: 4px;
+      font-size: 25px;
+      justify-content: center;
+      line-height: 18px;
+      align-items: center;
+      border-color: $blue-color;
+    }
+  }
+
+  #map{
+    width: 100%;
+    height: 550px;
+    margin-bottom: 13px;
+  }
+}
+
+// Стили кнопки Отправить
 .button-send{
   display: flex;
   justify-content: flex-end;
-  padding-right: 15px;
-}
+  padding-right: 10px;
+  height: 90px;
+  align-items: center;
 
-.send {
-  border-radius: 28px;
-  background-color: #212bff;
-  color: #ffffff;
-  font-family: Montserrat;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 24px;
-  line-height: 2.5;
-  border-radius: 2.25rem;
-  margin: 38px 0 38px 0;
-  width: 200px;
-  height: 56px;
+  .send {
+    border-radius: 28px;
+    background-color: $blue-color;
+    color: #ffffff;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    line-height: 2.5;
+    border-radius: 2.25rem;
+    width: 200px;
+    height: 56px;
 
-  &:hover{
-    background: #2029ea;
-  }
+    &:hover{
+      background: #2029ea;
+    }
 
-  &:active{
-    background: #1e26d8;
-  }
-}
-
-
-.form-control{
-  height: 56px;
-  border: 1px solid #dadef0;
-
-  &:hover{
-    cursor: pointer;
-    border-color: #c3c9db;
-  }
-
-  &:focus{
-    border-color: #8288a2;
+    &:active{
+      background: #1e26d8;
+    }
   }
 }
 
-
-/* Базовый контейнер табов */
-.tabs {
+// Базовый контейнер табов и их контента *
+.main {
 	min-width: 320px;
 	max-width: 1200px;
 	padding: 0px;
 	margin: 0 auto;
-}
-/* Стили секций с содержанием */
-.tabs>section {
-	display: none;
-	padding: 15px;
-	background: #fff;
-	border: 1px solid #ddd;
-}
+  height: -webkit-fill-content;
 
-.radio{
-  label {
-    display: inline-block;
-    cursor: pointer;
-    position: relative;
-    padding-left: 25px;
-    margin-right: 15px;
-    font-size: 13px;
-  }
-
-  input[type=radio] {
-    display: none;
-  }
-
-  label:before {
-    content: "";
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    margin-right: 10px;
-    position: absolute;
-    left: 0;
-    bottom: 1px;
-    border: 1px solid #dadef0;
-    background-color: #fff;
-    border-radius: 100%;
-  }
-
-  label:hover:before {
-    border-color: #212bff;
-  }
-
-  input[type=radio]:checked + label:before {
-    display: flex;
-    content: "\2022";
-    color: #212bff;
-    padding-bottom: 4px;
-    font-size: 25px;
-    justify-content: center;
-    line-height: 18px;
-    align-items: center;
-    border-color: #212bff;
+  section {
+  	display: none;
+  	padding: 15px;
+  	background: #fff;
+  	border: 1px solid #ddd;
   }
 }
 
-#map{
-  width: 100%;
-  height: 550px;
-}
-
-.radio{
-  margin-bottom: 37px;
-}
-
-
-
-
-@-webkit-keyframes fadeIn {
-	from {
-		opacity: 0;
-	}
-	to {
-		opacity: 1;
-	}
-}
-@keyframes fadeIn {
-	from {
-		opacity: 0;
-	}
-	to {
-		opacity: 1;
-	}
-}
-/* Прячем чекбоксы */
-.tabs>input {
+// Прячем чекбоксы
+.main>input {
 	display: none;
 	position: absolute;
 }
-/* Стили переключателей вкладок (табов) */
-.tabs>label {
+
+// Стили переключателей вкладок (табов)
+.main>label {
   display: inline-block;
   margin: 0 0 -1px;
   padding: 15px 25px;
@@ -220,57 +227,93 @@ body {
   border-width: 1px 1px 1px 1px;
   background: #edeeef;
   border-radius: 3px 3px 0 0;
+
+  .arrow{
+    display: none;
+
+    path{
+      fill: $gray-color;
+    }
+  }
 }
 
-/* Изменения стиля переключателей вкладок при наведении */
-.tabs>label:hover {
-	color: #212bff;
+//Изменения стиля переключателей вкладок при наведении
+.main>label:hover {
+	color: $blue-color;
 	cursor: pointer;
+
+  .arrow{
+    path{
+      fill: $blue-color;
+    }
+  }
 }
-/* Стили для активной вкладки */
-.tabs>input:checked+label {
-	color: #212bff;
+
+// Стили для активной вкладки
+.main>input:checked+label {
+	color: $blue-color;
 	border-bottom: 1px solid #fff;
 	background: #fff;
+
+  .arrow{
+    transform: rotate(180deg);
+    path{
+      fill: $blue-color;
+    }
+  }
 }
-/* Активация секций с помощью псевдокласса :checked */
+
+// Активация секций с помощью псевдокласса :checked
 #tab1:checked~#content-tab1, #tab2:checked~#content-tab2 {
 	display: block;
 }
-
-.input-labels{
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-
-  .error{
-    color: red;
-  }
-
-}
-
-
 
 #tab2-mobile:checked~#content-tab2 {
 	display: block;
 }
 
+// Стили мобильной версии вкладки Самовывоз
 #label2-mobile{
   display: none;
-  background: #fff;
-  border: 1px solid #ddd;
 }
 
-
+// Брейкпоинты для адаптива
+@media screen and (max-width: 1000px) {
+  #content-tab2{
+    #map{
+      height: 400px;
+    }
+  }
+}
 
 @media screen and (max-width: 768px) {
-  .tabs>label{
-    color: #b8bed8;
+  .main>label{
+    padding: 15px 15px;
+    color: $gray-color;
+
+    .arrow{
+      display: block;
+    }
   }
 
-  #map{
-    height: 300px;
+  #content-tab1{
+    label{
+      margin-top: 5px;
+    }
+
+    .input-labels{
+      .form-group{
+        padding: 0px;
+      }
+    }
   }
+
+  #content-tab2{
+    #map{
+      height: 300px;
+    }
+  }
+
   section{
     border-bottom: 0px !important;
   }
@@ -278,6 +321,8 @@ body {
   #label1{
     display: flex;
     background: #fff;
+    justify-content: space-between;
+    align-items: center;
   }
 
   #label2{
@@ -286,70 +331,72 @@ body {
 
   #label2-mobile{
     display: flex;
+    background: #fff;
+    justify-content: space-between;
+    align-items: center;
   }
 
-  .main{
+  .head {
     margin-left: 55px;
-  }
-
-    .head {
-      margin-left: 55px;
-      font-size: 28px;
+    font-size: 28px;
     }
 }
 
-@media screen and (max-width: 670px) /* height >= 820 px */
-{
-  .main{
+@media screen and (max-width: 670px) {
+  .head {
+    font-size: 26px;
     margin-left: 30px;
-  }
-
-    .head {
-      font-size: 26px;
-      margin-left: 30px;
     }
 }
 
-
-
-@media screen and (max-width: 590px) /* height >= 820 px */
-{
+@media screen and (max-width: 590px) {
     .head {
       font-size: 24px;
     }
 }
 
-@media screen and (max-width: 550px) /* height >= 820 px */
-{
+@media screen and (max-width: 550px) {
     .head {
       font-size: 20px;
     }
-}
 
-@media screen and (max-width: 470px) /* height >= 820 px */
-{
-  .content{
-    padding: 0;
-  }
-  .main{
-    margin-left: 20px;
-  }
-
-    .head {
-      font-size: 18px;
-      margin-left: 20px;
+    #content-tab1{
+      label{
+        margin-top: 0px;
+      }
     }
 }
 
-@media only screen and (max-width: 335px){
-  .tabs>section{
+@media screen and (max-width: 470px) {
+  .content{
     padding: 0;
   }
+  .head {
+    font-size: 18px;
+    margin-left: 20px;
+  }
 }
-
 
 @media only screen and (max-width: 320px) {
   body {
     overflow-x: scroll;
   }
+}
+
+@-webkit-keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
 }

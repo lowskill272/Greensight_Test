@@ -7,6 +7,9 @@ var im = new Inputmask("+7(999)999-99-99");
 im.mask('#phone');
 
 $(document).ready(function() {
+
+  var mql = window.matchMedia('screen and (max-width: 768px)');
+
   $('#first-form').submit(function(e) {
     e.preventDefault();
     var fio = $('#fio').val();
@@ -66,21 +69,27 @@ $(document).ready(function() {
 
         // myMap.setBounds(objectManager.getBounds());
 
-
         $.ajax({
           url: "data.json"
         }).done(function(data) {
           objectManager.add(data);
         });
         myMap.geoObjects.add(objectManager);
-        // var bounds = objectManager.getBounds();
-        // console.log(bounds);
 
-        myMap.behaviors.disable('scrollZoom');
-
-        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
-          myMap.behaviors.disable('drag');
+        function adaptive_map(mql){
+          if (mql.matches) {
+            myMap.behaviors.disable('scrollZoom');
+            myMap.behaviors.disable('drag');
+          } else {
+            myMap.behaviors.enable('scrollZoom');
+            myMap.behaviors.enable('drag');
+          }
         }
+
+        mql.addListener(adaptive_map);
+
+        adaptive_map(mql);
+
     }
 
     $(window).on('resize', function(){
@@ -93,10 +102,39 @@ $(document).ready(function() {
 
           if (win.width() >= 768) {
             if ($("#tab2-mobile").prop("checked")){
-              $('#tab2-mobile').prop('checked', 'f');
+              $('#tab2-mobile').prop('checked', false);
               $("#tab2").prop('checked', 'checked');
             }
           }
     });
-    
+
+  function adaptive_tabs(mql){
+    if (mql.matches) {
+      $('#label1').click(function(e){
+        e.preventDefault();
+        var $check = $(this).prev();
+        if($check.prop('checked'))
+          $check.prop( "checked", false );
+          else
+          $check.prop( "checked", true );
+        });
+
+        $('#label2-mobile').click(function(e){
+          e.preventDefault();
+          var $check = $(this).prev();
+        if($check.prop('checked'))
+          $check.prop( "checked", false );
+          else
+          $check.prop( "checked", true );
+        });
+      } else {
+        $('#label1').off('click');
+        $('#label2-mobile').off('click');
+      }
+    }
+
+    mql.addListener(adaptive_tabs);
+
+    adaptive_tabs(mql);
+
 });
