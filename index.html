@@ -6,70 +6,64 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
   <script src="https://api-maps.yandex.ru/2.1/?apikey=4f4eb220-9631-47d1-b466-f576b08a29fd&lang=ru_RU&amp;scroll=false>" type="text/javascript"></script>
-  <!-- <link rel="stylesheet" href="./dist/css/style.bundle.css" /> -->
 </head>
 <body>
   <div class="content">
     <div class="head">Выберите способ доставки</div>
-    <div class="tabs">
-
-    <input id="tab1" type="radio" name="tabs" checked>
-    <label id="label1" for="tab1" title="Вкладка 1">Доставка</label>
-
-    <!-- <input id="tab1-mobile" type="radio" name="tabs">
-    <label id="adapt-labels" for="tab1-mobile" title="Вкладка 1">Доставка</label> -->
-
-    <input id="tab2" type="radio" name="tabs">
-    <label id="label2" for="tab2" title="Вкладка 2">Самовывоз</label>
-
-    <section id="content-tab1">
-      <form role="form" class="form" id="first-form" method="post">
-        <div class="input-labels">
-          <div class="form-group col-md-6">
-            <label for="FIO">ФИО</label>
-            <input type="FIO" class="form-control" id="fio" placeholder="Только кириллица">
+    <div class="main">
+      <input id="tab1" type="radio" name="tabs" checked>
+      <label id="label1" for="tab1">Доставка
+        <svg class="arrow" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 16 16">
+          <path d="M13 4v2l-5 5-5-5v-2l5 5z"></path>
+        </svg>
+      </label>
+      <input id="tab2" type="radio" name="tabs">
+      <label id="label2" for="tab2">Самовывоз</label>
+      <section id="content-tab1">
+        <form role="form" class="form" id="first-form" method="post">
+          <div class="input-labels">
+            <div class="form-group col-md-6">
+              <label for="FIO">ФИО</label>
+              <input type="FIO" class="form-control" id="fio" placeholder="Только кириллица">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="phone">Телефон</label>
+              <input type="phone" class="form-control" id="phone" placeholder="+7(___)___-__-__">
+            </div>
+            <div class="form-group col-md-12">
+              <label for="adress">Адрес доставки</label>
+              <input type="adress" class="form-control" id="adress" placeholder="Город, улица, дом">
+            </div>
+            <div class="form-group col-md-12">
+              <label for="comment">Комментарий</label>
+              <input type="comment" class="form-control" id="comment">
+            </div>
           </div>
-          <div class="form-group col-md-6">
-            <label for="phone">Телефон</label>
-            <input type="phone" class="form-control" id="phone" placeholder="+7(___)___-__-__">
+          <div class="button-send">
+            <input type="submit" name="Отправить" value="Отправить" class="btn btn-primary send">
           </div>
-          <div class="form-group col-md-12">
-            <label for="adress">Адрес доставки</label>
-            <input type="adress" class="form-control" id="adress" placeholder="Город, улица, дом">
-          </div>
-          <div class="form-group col-md-12">
-            <label for="comment">Комментарий</label>
-            <input type="comment" class="form-control" id="comment">
-          </div>
-        </div>
-        <div class="button-send">
-          <!-- <button type="button" class="btn btn-primary send">Отправить</button> -->
-          <input type="submit" name="Отправить" value="Отправить" class="btn btn-primary send">
-        </div>
-      </form>
-    </section>
-    <input id="tab2-mobile" type="radio" name="tabs">
-    <label id="label2-mobile" for="tab2-mobile" title="Вкладка 2">Самовывоз</label>
-    <section id="content-tab2">
+        </form>
+      </section>
+      <input id="tab2-mobile" type="radio" name="tabs">
+      <label id="label2-mobile" for="tab2-mobile">Самовывоз
+        <svg class="arrow" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 16 16">
+          <path d="M13 4v2l-5 5-5-5v-2l5 5z"></path>
+        </svg>
+      </label>
+      <section id="content-tab2">
         <div class="radio">
-          <input id="first" type="radio" name="adress" value="first" checked>
+          <input id="first" type="radio" name="adrress" value="first" checked>
           <label for="first">Пункт выдачи заказов Песчаная улица, дом 13</label>
-          <input id="second" type="radio" name="adress" value="second">
+          <input id="second" type="radio" name="adrress" value="second">
           <label for="second">Пункт выдачи заказов Подсосенский переулок, 11</label>
         </div>
-
-        <!-- <div class="addr">
-          <input id="first-addr" type="radio" name="addr" checked>
-          <label id="addr-label" for="first-addr" title="Вкладка 2">Самовывоз</label>
-        </div>
-        <div class="addr">
-          <input id="second-addr" type="radio" name="addr">
-          <label id="addr-label" for="second-addr" title="Вкладка 2">Самовывоз</label>
-        </div> -->
         <div id="map"></div>
-    </section>
+        <div class="button-send">
+          <input type="submit" name="Отправить" value="Отправить" class="btn btn-primary send">
+        </div>
+      </section>
+    </div>
   </div>
-</div>
   <script src="dist/js/bundle.js"></script>
 </body>
 </html>
