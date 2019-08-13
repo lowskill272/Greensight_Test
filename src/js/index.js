@@ -94,13 +94,13 @@ $(document).ready(function() {
 
     $(window).on('resize', function(){
           var win = $(this);
-          if (win.width() < 768) {
+          if (win.width() <= 768) {
             if ($("#tab2").prop("checked")){
               $('#tab2-mobile').prop('checked', 'checked');
             }
           }
 
-          if (win.width() >= 768) {
+          if (win.width() > 768) {
             if ($("#tab2-mobile").prop("checked")){
               $('#tab2-mobile').prop('checked', false);
               $("#tab2").prop('checked', 'checked');
@@ -128,6 +128,9 @@ $(document).ready(function() {
           $check.prop( "checked", true );
         });
       } else {
+        if(!(($("#tab2-mobile").prop("checked"))||($("#tab1").prop("checked")))){
+          $('#tab1').prop('checked', 'checked');
+        }
         $('#label1').off('click');
         $('#label2-mobile').off('click');
       }
