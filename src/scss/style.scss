@@ -37,7 +37,7 @@ body {
 
 // Стили контентного контейнера
 .content {
-  height: -webkit-fill-available;
+  height: 100vh;
   width: 80%;
   max-width: 1200px;
   min-width: 320px;
@@ -121,7 +121,7 @@ body {
       font-size: 13px;
     }
 
-    input[type=radio] {
+    input {
       display: none;
     }
 
@@ -143,7 +143,7 @@ body {
       border-color: $blue-color;
     }
 
-    input[type=radio]:checked + label:before {
+    input:checked + label:before {
       display: flex;
       content: "\2022";
       color: $blue-color;
@@ -316,7 +316,7 @@ body {
   }
 
   section{
-    border-bottom: 0px !important;
+    border-bottom: 0px;
   }
 
   #label1{
